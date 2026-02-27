@@ -5,7 +5,7 @@ import '../App.css'
 export function Sidebar() {
   const navigate = useNavigate()
   const location = useLocation()
-  const { signOut } = useAuth()
+  const { signOut, user } = useAuth()
 
   const handleLogOut = () => {
     signOut()
@@ -44,7 +44,6 @@ export function Sidebar() {
     {
       name: 'SUPPORT',
       items: [
-        { label: 'Help Center', path: '/settings', icon: '❓' },
         { label: 'Feedback', path: '/impact-effort', icon: '📝' }
       ]
     }
@@ -61,7 +60,7 @@ export function Sidebar() {
           gap: 'var(--space-md)',
           width: '100%',
           padding: 'var(--space-sm) var(--space-md)',
-          background: isActive ? 'rgba(161, 0, 255, 0.15)' : 'transparent',
+          background: isActive ? 'rgba(14, 165, 233, 0.15)' : 'transparent',
           border: 'none',
           borderRadius: 'var(--radius-md)',
           color: isActive ? 'var(--accent-primary)' : 'var(--text-secondary)',
@@ -133,7 +132,7 @@ export function Sidebar() {
       {/* Bottom Section */}
       <div style={{ borderTop: '1px solid var(--border-subtle)', paddingTop: 'var(--space-lg)', display: 'flex', flexDirection: 'column', gap: 'var(--space-sm)' }}>
         <button
-          onClick={() => navigate('/profile/current')}
+          onClick={() => navigate(`/profile/${user?.username || 'me'}`)}
           style={{
             display: 'flex',
             alignItems: 'center',

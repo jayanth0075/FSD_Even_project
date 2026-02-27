@@ -69,8 +69,8 @@ export function Navbar() {
           <button
             onClick={toggleTheme}
             style={{
-              background: 'rgba(161, 0, 255, 0.1)',
-              border: '1px solid rgba(161, 0, 255, 0.3)',
+              background: 'rgba(14, 165, 233, 0.1)',
+              border: '1px solid rgba(14, 165, 233, 0.3)',
               borderRadius: 'var(--radius-full)',
               padding: 'var(--space-sm) var(--space-md)',
               color: 'var(--text-primary)',
@@ -82,12 +82,12 @@ export function Navbar() {
               justifyContent: 'center'
             }}
             onMouseEnter={(e) => {
-              e.currentTarget.style.background = 'rgba(161, 0, 255, 0.2)'
-              e.currentTarget.style.borderColor = 'rgba(161, 0, 255, 0.5)'
+              e.currentTarget.style.background = 'rgba(14, 165, 233, 0.2)'
+              e.currentTarget.style.borderColor = 'rgba(14, 165, 233, 0.5)'
             }}
             onMouseLeave={(e) => {
-              e.currentTarget.style.background = 'rgba(161, 0, 255, 0.1)'
-              e.currentTarget.style.borderColor = 'rgba(161, 0, 255, 0.3)'
+              e.currentTarget.style.background = 'rgba(14, 165, 233, 0.1)'
+              e.currentTarget.style.borderColor = 'rgba(14, 165, 233, 0.3)'
             }}
             title={`Switch to ${theme === 'dark' ? 'light' : 'dark'} mode`}
           >
@@ -103,20 +103,20 @@ export function Navbar() {
                   alignItems: 'center',
                   gap: 'var(--space-sm)',
                   padding: 'var(--space-sm) var(--space-md)',
-                  background: 'rgba(161, 0, 255, 0.1)',
-                  border: '1px solid rgba(161, 0, 255, 0.3)',
+                  background: 'rgba(14, 165, 233, 0.1)',
+                  border: '1px solid rgba(14, 165, 233, 0.3)',
                   borderRadius: 'var(--radius-full)',
                   color: 'var(--text-primary)',
                   cursor: 'pointer',
                   transition: 'all var(--transition-fast)'
                 }}
                 onMouseEnter={(e) => {
-                  e.currentTarget.style.background = 'rgba(161, 0, 255, 0.2)'
-                  e.currentTarget.style.borderColor = 'rgba(161, 0, 255, 0.5)'
+                  e.currentTarget.style.background = 'rgba(14, 165, 233, 0.2)'
+                  e.currentTarget.style.borderColor = 'rgba(14, 165, 233, 0.5)'
                 }}
                 onMouseLeave={(e) => {
-                  e.currentTarget.style.background = 'rgba(161, 0, 255, 0.1)'
-                  e.currentTarget.style.borderColor = 'rgba(161, 0, 255, 0.3)'
+                  e.currentTarget.style.background = 'rgba(14, 165, 233, 0.1)'
+                  e.currentTarget.style.borderColor = 'rgba(14, 165, 233, 0.3)'
                 }}
               >
                 <div style={{
