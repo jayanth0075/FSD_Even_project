@@ -14,12 +14,6 @@ export function Sidebar() {
 
   const sections = [
     {
-      name: 'HOME',
-      items: [
-        { label: 'Home', path: '/', icon: '🏠' }
-      ]
-    },
-    {
       name: 'PROFILE TRACKER',
       items: [
         { label: 'Portfolio', path: '/dashboard', icon: '🌐' }
