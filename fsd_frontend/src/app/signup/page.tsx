@@ -74,7 +74,7 @@ export default function SignUpPage() {
         alignItems: 'center',
         justifyContent: 'center',
         padding: 'var(--space-xl)',
-        background: 'linear-gradient(135deg, rgba(10, 10, 10, 0.95), rgba(10, 10, 10, 0.98))',
+        background: 'var(--bg-primary)',
         backgroundImage: `
           radial-gradient(circle at 20% 50%, rgba(161, 0, 255, 0.05) 0%, transparent 50%),
           radial-gradient(circle at 80% 80%, rgba(123, 47, 190, 0.05) 0%, transparent 50%)
@@ -83,7 +83,7 @@ export default function SignUpPage() {
         <div className="card elevated" style={{
           width: '100%',
           maxWidth: '450px',
-          background: 'rgba(20, 20, 20, 0.85)',
+          background: 'var(--bg-secondary)',
           backdropFilter: 'blur(20px)',
           borderColor: 'rgba(161, 0, 255, 0.2)'
         }}>
