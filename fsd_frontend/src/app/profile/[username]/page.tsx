@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom'
+import { useParams, useNavigate } from 'react-router-dom'
 import { Navbar } from '../../../components/Navbar'
 import { Sidebar } from '../../../components/Sidebar'
 import api from '../../../services/api'
@@ -7,9 +7,18 @@ import type { User } from '../../../types/dashboard'
 
 export default function ProfilePage() {
   const params = useParams<{ username?: string }>()
+  const navigate = useNavigate()
   const [user, setUser] = useState<User | null>(null)
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
+  const [statsExpanded, setStatsExpanded] = useState(true)
+  const [addPlatformVisible, setAddPlatformVisible] = useState(false)
+  const [toast, setToast] = useState<string | null>(null)
+
+  const showToast = (msg: string) => {
+    setToast(msg)
+    setTimeout(() => setToast(null), 2500)
+  }
 
   useEffect(() => {
     const loadProfile = async () => {
@@ -81,9 +90,10 @@ export default function ProfilePage() {
                 alignItems: 'center',
                 justifyContent: 'center',
                 margin: '0 auto var(--space-lg) auto',
-                fontSize: '3em'
+                fontSize: '3em',
+                color: '#fff',
+                fontWeight: 700
               }}>
-                👤
                 {(user.name || user.username).charAt(0).toUpperCase()}
               </div>
               
@@ -96,37 +106,63 @@ export default function ProfilePage() {
               </p>
 
               {/* Get Badge Button */}
-              <button style={{
-                width: '100%',
-                marginTop: 'var(--space-lg)',
-                padding: 'var(--space-md)',
-                background: 'linear-gradient(135deg, #ff9800, #ff6f00)',
-                border: 'none',
-                borderRadius: 'var(--radius-lg)',
-                color: 'white',
-                fontWeight: 600,
-                cursor: 'pointer',
-                fontSize: 'var(--font-size-sm)'
-              }}>
+              <button
+                onClick={() => showToast('Verification request submitted! We\'ll review your profile shortly.')}
+                style={{
+                  width: '100%',
+                  marginTop: 'var(--space-lg)',
+                  padding: 'var(--space-md)',
+                  background: 'linear-gradient(135deg, #ff9800, #ff6f00)',
+                  border: 'none',
+                  borderRadius: 'var(--radius-lg)',
+                  color: 'white',
+                  fontWeight: 600,
+                  cursor: 'pointer',
+                  fontSize: 'var(--font-size-sm)',
+                  transition: 'opacity 0.15s'
+                }}
+                onMouseEnter={(e) => e.currentTarget.style.opacity = '0.85'}
+                onMouseLeave={(e) => e.currentTarget.style.opacity = '1'}
+              >
                 🏆 Get Verification
               </button>
 
               {/* Social Links */}
               <div style={{ display: 'flex', gap: 'var(--space-md)', justifyContent: 'center', marginTop: 'var(--space-lg)' }}>
-                {['✉️', '💼', '𝕏', '🌐', '📋'].map((icon, i) => (
-                  <button key={i} style={{
-                    width: '36px',
-                    height: '36px',
-                    borderRadius: '50%',
-                    background: 'rgba(161, 0, 255, 0.1)',
-                    border: '1px solid rgba(161, 0, 255, 0.3)',
-                    cursor: 'pointer',
-                    fontSize: '1.2em',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center'
-                  }}>
-                    {icon}
+                {[
+                  { icon: '✉️', label: 'Email' },
+                  { icon: '💼', label: 'LinkedIn' },
+                  { icon: '𝕏', label: 'X / Twitter' },
+                  { icon: '🌐', label: 'Website' },
+                  { icon: '📋', label: 'Resume' }
+                ].map((s, i) => (
+                  <button
+                    key={i}
+                    title={s.label}
+                    onClick={() => showToast(`${s.label} link not set yet. Edit your profile to add it.`)}
+                    style={{
+                      width: '36px',
+                      height: '36px',
+                      borderRadius: '50%',
+                      background: 'rgba(14, 165, 233, 0.1)',
+                      border: '1px solid rgba(14, 165, 233, 0.3)',
+                      cursor: 'pointer',
+                      fontSize: '1.2em',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      transition: 'all 0.15s'
+                    }}
+                    onMouseEnter={(e) => {
+                      e.currentTarget.style.background = 'rgba(14,165,233,0.25)'
+                      e.currentTarget.style.transform = 'translateY(-2px)'
+                    }}
+                    onMouseLeave={(e) => {
+                      e.currentTarget.style.background = 'rgba(14,165,233,0.1)'
+                      e.currentTarget.style.transform = 'translateY(0)'
+                    }}
+                  >
+                    {s.icon}
                   </button>
                 ))}
               </div>
@@ -146,11 +182,16 @@ export default function ProfilePage() {
             <div className="card" style={{ padding: 'var(--space-lg)' }}>
               <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 'var(--space-md)' }}>
                 <h4 style={{ margin: 0, fontSize: 'var(--font-size-base)', fontWeight: 600 }}>Problem Solving Stats</h4>
-                <span style={{ cursor: 'pointer', fontSize: '1.2em' }}>▲</span>
+                <span
+                  onClick={() => setStatsExpanded(!statsExpanded)}
+                  style={{ cursor: 'pointer', fontSize: '1.2em', transition: 'transform 0.2s', display: 'inline-block', transform: statsExpanded ? 'rotate(0deg)' : 'rotate(180deg)' }}
+                >
+                  ▲
+                </span>
               </div>
               
               {/* Platform Stats */}
-              <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-md)' }}>
+              {statsExpanded && <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-md)' }}>
                 {[
                   { name: 'LeetCode', color: '#FFA500', problems: 245 },
                   { name: 'CodeChef', color: '#8B4513', problems: 89 },
@@ -161,13 +202,13 @@ export default function ProfilePage() {
                     display: 'flex',
                     alignItems: 'center',
                     padding: 'var(--space-md)',
-                    background: 'rgba(161, 0, 255, 0.05)',
+                    background: 'rgba(14, 165, 233, 0.05)',
                     borderRadius: 'var(--radius-md)',
                     cursor: 'pointer',
                     transition: 'all 0.3s ease'
                   }}
-                  onMouseEnter={(e) => e.currentTarget.style.background = 'rgba(161, 0, 255, 0.1)'}
-                  onMouseLeave={(e) => e.currentTarget.style.background = 'rgba(161, 0, 255, 0.05)'}>
+                  onMouseEnter={(e) => e.currentTarget.style.background = 'rgba(14, 165, 233, 0.1)'}
+                  onMouseLeave={(e) => e.currentTarget.style.background = 'rgba(14, 165, 233, 0.05)'}>
                     <div style={{
                       width: '24px',
                       height: '24px',
@@ -185,20 +226,31 @@ export default function ProfilePage() {
                     </span>
                   </div>
                 ))}
-              </div>
+              </div>}
 
-              <button style={{
-                width: '100%',
-                marginTop: 'var(--space-lg)',
-                padding: 'var(--space-md)',
-                background: 'rgba(161, 0, 255, 0.1)',
-                border: '1px solid rgba(161, 0, 255, 0.3)',
-                borderRadius: 'var(--radius-lg)',
-                color: 'var(--accent-primary)',
-                fontWeight: 600,
-                cursor: 'pointer',
-                fontSize: 'var(--font-size-sm)'
-              }}>
+              {addPlatformVisible && (
+                <div style={{ marginTop: 'var(--space-md)', padding: 'var(--space-md)', background: 'rgba(14,165,233,0.07)', borderRadius: 'var(--radius-md)', fontSize: 'var(--font-size-sm)', color: 'var(--text-secondary)' }}>
+                  Platform linking coming soon! Connect your LeetCode, CodeForces &amp; more from Settings.
+                </div>
+              )}
+              <button
+                onClick={() => { setAddPlatformVisible(!addPlatformVisible); navigate('/settings') }}
+                style={{
+                  width: '100%',
+                  marginTop: 'var(--space-md)',
+                  padding: 'var(--space-md)',
+                  background: 'rgba(14, 165, 233, 0.1)',
+                  border: '1px solid rgba(14, 165, 233, 0.3)',
+                  borderRadius: 'var(--radius-lg)',
+                  color: 'var(--accent-primary)',
+                  fontWeight: 600,
+                  cursor: 'pointer',
+                  fontSize: 'var(--font-size-sm)',
+                  transition: 'all 0.15s'
+                }}
+                onMouseEnter={(e) => e.currentTarget.style.background = 'rgba(14,165,233,0.2)'}
+                onMouseLeave={(e) => e.currentTarget.style.background = 'rgba(14,165,233,0.1)'}
+              >
                 + Add Platform
               </button>
             </div>
@@ -225,17 +277,23 @@ export default function ProfilePage() {
                   Get verified to unlock exclusive badges and rankings on leaderboards
                 </p>
               </div>
-              <button style={{
-                padding: 'var(--space-md) var(--space-lg)',
-                background: '#000',
-                color: '#fff',
-                border: 'none',
-                borderRadius: 'var(--radius-md)',
-                cursor: 'pointer',
-                fontWeight: 600,
-                whiteSpace: 'nowrap',
-                marginLeft: 'var(--space-lg)'
-              }}>
+              <button
+                onClick={() => showToast('Verification request submitted! Check your email for next steps.')}
+                style={{
+                  padding: 'var(--space-md) var(--space-lg)',
+                  background: '#000',
+                  color: '#fff',
+                  border: 'none',
+                  borderRadius: 'var(--radius-md)',
+                  cursor: 'pointer',
+                  fontWeight: 600,
+                  whiteSpace: 'nowrap',
+                  marginLeft: 'var(--space-lg)',
+                  transition: 'opacity 0.15s'
+                }}
+                onMouseEnter={(e) => e.currentTarget.style.opacity = '0.8'}
+                onMouseLeave={(e) => e.currentTarget.style.opacity = '1'}
+              >
                 Verify Profile →
               </button>
             </div>
@@ -272,8 +330,8 @@ export default function ProfilePage() {
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 'var(--space-lg)' }}>
                 <h3 style={{ margin: 0, fontSize: 'var(--font-size-lg)' }}>Activity</h3>
                 <select style={{
-                  background: 'rgba(161, 0, 255, 0.1)',
-                  border: '1px solid rgba(161, 0, 255, 0.3)',
+                  background: 'rgba(14, 165, 233, 0.1)',
+                  border: '1px solid rgba(14, 165, 233, 0.3)',
                   borderRadius: 'var(--radius-md)',
                   padding: 'var(--space-sm)',
                   color: 'var(--text-primary)',
@@ -402,7 +460,7 @@ export default function ProfilePage() {
                 ].map((ranking) => (
                   <div key={ranking.platform} style={{
                     padding: 'var(--space-lg)',
-                    background: 'rgba(161, 0, 255, 0.05)',
+                    background: 'rgba(14, 165, 233, 0.05)',
                     borderRadius: 'var(--radius-lg)',
                     textAlign: 'center'
                   }}>
@@ -420,11 +478,36 @@ export default function ProfilePage() {
         </div>
       </main>
 
+      {/* Toast Notification */}
+      {toast && (
+        <div style={{
+          position: 'fixed',
+          bottom: 'var(--space-xl)',
+          right: 'var(--space-xl)',
+          background: 'var(--bg-tertiary)',
+          border: '1px solid var(--accent-primary)',
+          color: 'var(--text-primary)',
+          padding: 'var(--space-md) var(--space-lg)',
+          borderRadius: 'var(--radius-lg)',
+          boxShadow: 'var(--shadow-lg)',
+          zIndex: 1000,
+          fontSize: 'var(--font-size-sm)',
+          maxWidth: '360px',
+          animation: 'slideInRight 0.2s ease-out'
+        }}>
+          {toast}
+        </div>
+      )}
+
       <style>{`
         @media (max-width: 1024px) {
           main > div {
             grid-template-columns: 1fr !important;
           }
+        }
+        @keyframes slideInRight {
+          from { transform: translateX(20px); opacity: 0; }
+          to { transform: translateX(0); opacity: 1; }
         }
       `}</style>
     </>
