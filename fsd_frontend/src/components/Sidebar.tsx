@@ -67,7 +67,7 @@ export function Sidebar() {
           gap: 'var(--space-md)',
           width: '100%',
           padding: 'var(--space-sm) var(--space-md)',
-          background: isActive ? 'rgba(88, 166, 255, 0.15)' : 'transparent',
+          background: isActive ? 'rgba(161, 0, 255, 0.15)' : 'transparent',
           border: 'none',
           borderRadius: 'var(--radius-md)',
           color: isActive ? 'var(--accent-primary)' : 'var(--text-secondary)',
@@ -187,7 +187,7 @@ export function Sidebar() {
             fontWeight: 600
           }}
           onMouseEnter={(e) => {
-            e.currentTarget.style.background = 'rgba(244, 67, 54, 0.1)'
+            e.currentTarget.style.background = 'rgba(255, 23, 68, 0.1)'
           }}
           onMouseLeave={(e) => {
             e.currentTarget.style.background = 'transparent'
