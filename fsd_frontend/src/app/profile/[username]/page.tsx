@@ -118,8 +118,8 @@ export default function ProfilePage() {
                     width: '36px',
                     height: '36px',
                     borderRadius: '50%',
-                    background: 'rgba(88, 166, 255, 0.1)',
-                    border: '1px solid rgba(88, 166, 255, 0.3)',
+                    background: 'rgba(161, 0, 255, 0.1)',
+                    border: '1px solid rgba(161, 0, 255, 0.3)',
                     cursor: 'pointer',
                     fontSize: '1.2em',
                     display: 'flex',
@@ -161,13 +161,13 @@ export default function ProfilePage() {
                     display: 'flex',
                     alignItems: 'center',
                     padding: 'var(--space-md)',
-                    background: 'rgba(88, 166, 255, 0.05)',
+                    background: 'rgba(161, 0, 255, 0.05)',
                     borderRadius: 'var(--radius-md)',
                     cursor: 'pointer',
                     transition: 'all 0.3s ease'
                   }}
-                  onMouseEnter={(e) => e.currentTarget.style.background = 'rgba(88, 166, 255, 0.1)'}
-                  onMouseLeave={(e) => e.currentTarget.style.background = 'rgba(88, 166, 255, 0.05)'}>
+                  onMouseEnter={(e) => e.currentTarget.style.background = 'rgba(161, 0, 255, 0.1)'}
+                  onMouseLeave={(e) => e.currentTarget.style.background = 'rgba(161, 0, 255, 0.05)'>
                     <div style={{
                       width: '24px',
                       height: '24px',
@@ -191,8 +191,8 @@ export default function ProfilePage() {
                 width: '100%',
                 marginTop: 'var(--space-lg)',
                 padding: 'var(--space-md)',
-                background: 'rgba(88, 166, 255, 0.1)',
-                border: '1px solid rgba(88, 166, 255, 0.3)',
+                background: 'rgba(161, 0, 255, 0.1)',
+                border: '1px solid rgba(161, 0, 255, 0.3)',
                 borderRadius: 'var(--radius-lg)',
                 color: 'var(--accent-primary)',
                 fontWeight: 600,
@@ -272,8 +272,8 @@ export default function ProfilePage() {
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 'var(--space-lg)' }}>
                 <h3 style={{ margin: 0, fontSize: 'var(--font-size-lg)' }}>Activity</h3>
                 <select style={{
-                  background: 'rgba(88, 166, 255, 0.1)',
-                  border: '1px solid rgba(88, 166, 255, 0.3)',
+                  background: 'rgba(161, 0, 255, 0.1)',
+                  border: '1px solid rgba(161, 0, 255, 0.3)',
                   borderRadius: 'var(--radius-md)',
                   padding: 'var(--space-sm)',
                   color: 'var(--text-primary)',
@@ -402,7 +402,7 @@ export default function ProfilePage() {
                 ].map((ranking) => (
                   <div key={ranking.platform} style={{
                     padding: 'var(--space-lg)',
-                    background: 'rgba(88, 166, 255, 0.05)',
+                    background: 'rgba(161, 0, 255, 0.05)',
                     borderRadius: 'var(--radius-lg)',
                     textAlign: 'center'
                   }}>

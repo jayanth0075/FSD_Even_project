@@ -74,18 +74,18 @@ export default function SignUpPage() {
         alignItems: 'center',
         justifyContent: 'center',
         padding: 'var(--space-xl)',
-        background: 'linear-gradient(135deg, rgba(16, 17, 23, 0.9), rgba(13, 17, 23, 0.95))',
+        background: 'linear-gradient(135deg, rgba(10, 10, 10, 0.95), rgba(10, 10, 10, 0.98))',
         backgroundImage: `
-          radial-gradient(circle at 20% 50%, rgba(88, 166, 255, 0.05) 0%, transparent 50%),
-          radial-gradient(circle at 80% 80%, rgba(121, 192, 255, 0.05) 0%, transparent 50%)
+          radial-gradient(circle at 20% 50%, rgba(161, 0, 255, 0.05) 0%, transparent 50%),
+          radial-gradient(circle at 80% 80%, rgba(123, 47, 190, 0.05) 0%, transparent 50%)
         `
       }}>
         <div className="card elevated" style={{
           width: '100%',
           maxWidth: '450px',
-          background: 'rgba(22, 27, 34, 0.8)',
+          background: 'rgba(20, 20, 20, 0.85)',
           backdropFilter: 'blur(20px)',
-          borderColor: 'rgba(88, 166, 255, 0.2)'
+          borderColor: 'rgba(161, 0, 255, 0.2)'
         }}>
           {/* Header */}
           <div style={{
@@ -124,8 +124,8 @@ export default function SignUpPage() {
             {error && (
               <div style={{
                 padding: 'var(--space-md)',
-                backgroundColor: 'rgba(248, 81, 73, 0.1)',
-                border: '1px solid rgba(248, 81, 73, 0.3)',
+                backgroundColor: 'rgba(255, 23, 68, 0.1)',
+                border: '1px solid rgba(255, 23, 68, 0.3)',
                 borderRadius: 'var(--radius-md)',
                 marginBottom: 'var(--space-lg)',
                 color: 'var(--accent-danger)',
@@ -165,7 +165,7 @@ export default function SignUpPage() {
                 }}
                 onFocus={(e) => {
                   e.currentTarget.style.borderColor = 'var(--accent-primary)'
-                  e.currentTarget.style.boxShadow = '0 0 0 3px rgba(88, 166, 255, 0.1)'
+                  e.currentTarget.style.boxShadow = '0 0 0 3px rgba(161, 0, 255, 0.1)'
                 }}
                 onBlur={(e) => {
                   e.currentTarget.style.borderColor = 'var(--border-subtle)'
@@ -204,7 +204,7 @@ export default function SignUpPage() {
                 }}
                 onFocus={(e) => {
                   e.currentTarget.style.borderColor = 'var(--accent-primary)'
-                  e.currentTarget.style.boxShadow = '0 0 0 3px rgba(88, 166, 255, 0.1)'
+                  e.currentTarget.style.boxShadow = '0 0 0 3px rgba(161, 0, 255, 0.1)'
                 }}
                 onBlur={(e) => {
                   e.currentTarget.style.borderColor = 'var(--border-subtle)'
@@ -243,7 +243,7 @@ export default function SignUpPage() {
                 }}
                 onFocus={(e) => {
                   e.currentTarget.style.borderColor = 'var(--accent-primary)'
-                  e.currentTarget.style.boxShadow = '0 0 0 3px rgba(88, 166, 255, 0.1)'
+                  e.currentTarget.style.boxShadow = '0 0 0 3px rgba(161, 0, 255, 0.1)'
                 }}
                 onBlur={(e) => {
                   e.currentTarget.style.borderColor = 'var(--border-subtle)'
@@ -282,7 +282,7 @@ export default function SignUpPage() {
                 }}
                 onFocus={(e) => {
                   e.currentTarget.style.borderColor = 'var(--accent-primary)'
-                  e.currentTarget.style.boxShadow = '0 0 0 3px rgba(88, 166, 255, 0.1)'
+                  e.currentTarget.style.boxShadow = '0 0 0 3px rgba(161, 0, 255, 0.1)'
                 }}
                 onBlur={(e) => {
                   e.currentTarget.style.borderColor = 'var(--border-subtle)'

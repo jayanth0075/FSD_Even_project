@@ -62,14 +62,14 @@ export default function LandingPage() {
         particle.y = Math.max(0, Math.min(canvas.height, particle.y))
 
         // Draw particle
-        ctx.fillStyle = '#58a6ff'
-        ctx.beginPath()
+        ctx.fillStyle = '#A100FF'
+        ctx.beginPath();
         ctx.arc(particle.x, particle.y, 3, 0, Math.PI * 2)
         ctx.fill()
       })
 
       // Draw connections
-      ctx.strokeStyle = 'rgba(88, 166, 255, 0.2)'
+      ctx.strokeStyle = 'rgba(161, 0, 255, 0.2)'
       ctx.lineWidth = 1
       for (let i = 0; i < particles.length; i++) {
         for (let j = i + 1; j < particles.length; j++) {
@@ -126,7 +126,7 @@ export default function LandingPage() {
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
-            background: 'linear-gradient(135deg, rgba(16, 17, 23, 0.7), rgba(13, 17, 23, 0.9))',
+            background: 'linear-gradient(135deg, rgba(10, 10, 10, 0.85), rgba(10, 10, 10, 0.95))',
             backdropFilter: 'blur(10px)'
           }}>
             <div className="container md" style={{ textAlign: 'center' }}>
@@ -141,7 +141,7 @@ export default function LandingPage() {
                 <h1 style={{
                   fontSize: 'clamp(2.5em, 8vw, 4em)',
                   marginBottom: 'var(--space-md)',
-                  background: 'linear-gradient(135deg, #58a6ff, #79c0ff)',
+                  background: 'linear-gradient(135deg, #A100FF, #D060FF)',
                   WebkitBackgroundClip: 'text',
                   WebkitTextFillColor: 'transparent',
                   backgroundClip: 'text',
@@ -169,7 +169,7 @@ export default function LandingPage() {
                   <button className="primary" style={{
                     fontSize: 'var(--font-size-base)',
                     padding: 'var(--space-md) var(--space-xl)',
-                    boxShadow: '0 0 30px rgba(88, 166, 255, 0.3)',
+                    boxShadow: '0 0 30px rgba(161, 0, 255, 0.4)',
                     cursor: 'pointer'
                   }} onClick={() => navigate('/signup')}>
                     Get Started
@@ -178,8 +178,8 @@ export default function LandingPage() {
                     fontSize: 'var(--font-size-base)',
                     padding: 'var(--space-md) var(--space-xl)',
                     backdropFilter: 'blur(10px)',
-                    background: 'rgba(88, 166, 255, 0.1)',
-                    border: '1px solid rgba(88, 166, 255, 0.3)',
+                    background: 'rgba(161, 0, 255, 0.1)',
+                    border: '1px solid rgba(161, 0, 255, 0.3)',
                     cursor: 'pointer'
                   }} onClick={() => navigate('/signin')}>
                     Learn More
@@ -220,7 +220,7 @@ export default function LandingPage() {
               <h2 style={{
                 textAlign: 'center',
                 marginBottom: 'var(--space-2xl)',
-                background: 'linear-gradient(135deg, #58a6ff, #79c0ff)',
+                background: 'linear-gradient(135deg, #A100FF, #D060FF)',
                 WebkitBackgroundClip: 'text',
                 WebkitTextFillColor: 'transparent',
                 backgroundClip: 'text'
@@ -267,8 +267,8 @@ export default function LandingPage() {
                     style={{
                       animationDelay: `${idx * 50}ms`,
                       backdropFilter: 'blur(10px)',
-                      background: 'rgba(22, 27, 34, 0.6)',
-                      borderColor: 'rgba(88, 166, 255, 0.1)'
+                      background: 'rgba(20, 20, 20, 0.7)',
+                      borderColor: 'rgba(161, 0, 255, 0.15)'
                     }}
                   >
                     <div style={{ fontSize: '2em', marginBottom: 'var(--space-md)' }}>
@@ -284,9 +284,9 @@ export default function LandingPage() {
 
           {/* CTA Section */}
           <section style={{
-            background: 'linear-gradient(135deg, rgba(88, 166, 255, 0.1), rgba(121, 192, 255, 0.05))',
-            borderTop: '1px solid rgba(88, 166, 255, 0.2)',
-            borderBottom: '1px solid rgba(88, 166, 255, 0.2)',
+            background: 'linear-gradient(135deg, rgba(161, 0, 255, 0.08), rgba(123, 47, 190, 0.04))',
+            borderTop: '1px solid rgba(161, 0, 255, 0.15)',
+            borderBottom: '1px solid rgba(161, 0, 255, 0.15)',
             paddingTop: 'var(--space-2xl)',
             paddingBottom: 'var(--space-2xl)',
             textAlign: 'center',
@@ -311,7 +311,7 @@ export default function LandingPage() {
               <button className="primary" style={{
                 fontSize: 'var(--font-size-base)',
                 padding: 'var(--space-md) var(--space-xl)',
-                boxShadow: '0 0 30px rgba(88, 166, 255, 0.3)',
+                boxShadow: '0 0 30px rgba(161, 0, 255, 0.4)',
                 cursor: 'pointer'
               }} onClick={() => navigate('/signup')}>
                 Start Free Today
