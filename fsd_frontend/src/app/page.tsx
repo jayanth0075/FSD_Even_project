@@ -80,8 +80,8 @@ export default function LandingPage() {
       const isDark = theme === 'dark'
       ctx.clearRect(0, 0, canvas.width, canvas.height)
 
-      const dotColor = isDark ? 'rgba(180,130,255,0.7)' : 'rgba(100,80,160,0.5)'
-      const lineBase = isDark ? 'rgba(161,0,255,' : 'rgba(100,80,160,'
+      const dotColor = isDark ? 'rgba(125,211,252,0.7)' : 'rgba(56,189,248,0.5)'
+      const lineBase = isDark ? 'rgba(14,165,233,' : 'rgba(56,189,248,'
 
       particles.forEach((p) => {
         p.x += p.vx; p.y += p.vy
@@ -182,7 +182,7 @@ export default function LandingPage() {
               }}>
                 I'm{' '}
                 <span style={{ color: 'var(--text-primary)' }}>Ghost</span>
-                <span style={{ color: '#A100FF' }}>Write</span>
+                <span style={{ color: '#0EA5E9' }}>Write</span>
               </h1>
 
               <p style={{
@@ -192,7 +192,7 @@ export default function LandingPage() {
                 color: 'var(--text-secondary)',
               }}>
                 I Help You{' '}
-                <span style={{ color: '#A100FF', borderRight: '2px solid #A100FF', paddingRight: '2px' }}>
+                <span style={{ color: '#0EA5E9', borderRight: '2px solid #0EA5E9', paddingRight: '2px' }}>
                   {typedText}
                 </span>
               </p>
@@ -213,7 +213,7 @@ export default function LandingPage() {
                   onClick={() => navigate('/signup')}
                   style={{
                     padding: 'var(--space-md) var(--space-xl)',
-                    background: '#1a1a6e',
+                    background: '#0c4a8f',
                     color: '#fff',
                     border: 'none',
                     borderRadius: 'var(--radius-full)',
@@ -223,16 +223,16 @@ export default function LandingPage() {
                     display: 'flex',
                     alignItems: 'center',
                     gap: 'var(--space-sm)',
-                    boxShadow: '0 4px 20px rgba(26,26,110,0.35)',
+                    boxShadow: '0 4px 20px rgba(12,74,143,0.35)',
                     transition: 'all var(--transition-fast)',
                   }}
                   onMouseEnter={(e) => {
                     e.currentTarget.style.transform = 'translateY(-2px)'
-                    e.currentTarget.style.boxShadow = '0 8px 28px rgba(26,26,110,0.5)'
+                    e.currentTarget.style.boxShadow = '0 8px 28px rgba(12,74,143,0.5)'
                   }}
                   onMouseLeave={(e) => {
                     e.currentTarget.style.transform = 'translateY(0)'
-                    e.currentTarget.style.boxShadow = '0 4px 20px rgba(26,26,110,0.35)'
+                    e.currentTarget.style.boxShadow = '0 4px 20px rgba(12,74,143,0.35)'
                   }}
                 >
                   Get Started <span>➜</span>
@@ -284,7 +284,7 @@ export default function LandingPage() {
                       boxShadow: '0 2px 8px rgba(0,0,0,0.25)',
                     }}
                     onMouseEnter={(e) => {
-                      e.currentTarget.style.background = '#A100FF'
+                      e.currentTarget.style.background = '#0EA5E9'
                       e.currentTarget.style.transform = 'translateY(-3px)'
                     }}
                     onMouseLeave={(e) => {
@@ -304,11 +304,11 @@ export default function LandingPage() {
                 width: 'clamp(260px, 30vw, 380px)',
                 height: 'clamp(260px, 30vw, 380px)',
                 borderRadius: '50%',
-                background: 'linear-gradient(135deg, #A100FF 0%, #7B2FBE 50%, #4B0082 100%)',
+                background: 'linear-gradient(135deg, #0EA5E9 0%, #0284C7 50%, #023E8A 100%)',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
-                boxShadow: '0 0 60px rgba(161,0,255,0.35), 0 0 120px rgba(161,0,255,0.15)',
+                boxShadow: '0 0 60px rgba(14,165,233,0.35), 0 0 120px rgba(14,165,233,0.15)',
                 position: 'relative',
                 animation: 'floatAnim 4s ease-in-out infinite',
               }}>
@@ -316,14 +316,14 @@ export default function LandingPage() {
                   position: 'absolute',
                   inset: '-8px',
                   borderRadius: '50%',
-                  border: '2px solid rgba(161,0,255,0.3)',
+                  border: '2px solid rgba(14,165,233,0.3)',
                   animation: 'spinRing 8s linear infinite',
                 }} />
                 <div style={{
                   position: 'absolute',
                   inset: '-22px',
                   borderRadius: '50%',
-                  border: '1px dashed rgba(161,0,255,0.2)',
+                  border: '1px dashed rgba(14,165,233,0.2)',
                   animation: 'spinRing 12s linear infinite reverse',
                 }} />
                 <div style={{ textAlign: 'center', color: '#fff' }}>
@@ -365,7 +365,7 @@ export default function LandingPage() {
             <h2 style={{
               textAlign: 'center',
               marginBottom: 'var(--space-2xl)',
-              background: 'linear-gradient(135deg, #A100FF, #D060FF)',
+              background: 'linear-gradient(135deg, #0EA5E9, #38BDF8)',
               WebkitBackgroundClip: 'text',
               WebkitTextFillColor: 'transparent',
               backgroundClip: 'text',
@@ -393,8 +393,8 @@ export default function LandingPage() {
 
         {/* CTA Section */}
         <section style={{
-          background: 'linear-gradient(135deg, rgba(161,0,255,0.08), rgba(123,47,190,0.04))',
-          borderTop: '1px solid rgba(161,0,255,0.15)',
+          background: 'linear-gradient(135deg, rgba(14,165,233,0.08), rgba(2,132,199,0.04))',
+          borderTop: '1px solid rgba(14,165,233,0.15)',
           paddingTop: 'var(--space-2xl)',
           paddingBottom: 'var(--space-2xl)',
           textAlign: 'center',
@@ -414,7 +414,7 @@ export default function LandingPage() {
               style={{
                 fontSize: 'var(--font-size-base)',
                 padding: 'var(--space-md) var(--space-2xl)',
-                boxShadow: '0 0 30px rgba(161,0,255,0.4)',
+                boxShadow: '0 0 30px rgba(14,165,233,0.4)',
                 cursor: 'pointer',
                 borderRadius: 'var(--radius-full)',
               }}
