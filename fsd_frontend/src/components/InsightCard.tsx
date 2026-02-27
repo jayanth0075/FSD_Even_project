@@ -5,8 +5,8 @@ interface InsightCardProps {
 }
 
 const insightTypeConfig = {
-  tip: { color: 'var(--accent-secondary)', bg: 'rgba(121, 192, 255, 0.1)' },
-  achievement: { color: 'var(--accent-primary)', bg: 'rgba(88, 166, 255, 0.1)' },
+  tip: { color: 'var(--accent-secondary)', bg: 'rgba(123, 47, 190, 0.1)' },
+  achievement: { color: 'var(--accent-primary)', bg: 'rgba(161, 0, 255, 0.1)' },
   milestone: { color: 'var(--accent-success)', bg: 'rgba(63, 185, 80, 0.1)' }
 }
 
