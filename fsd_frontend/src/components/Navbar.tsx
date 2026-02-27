@@ -275,7 +275,6 @@ export function Navbar() {
           top: 0;
           z-index: 100;
           backdrop-filter: blur(16px);
-          background-color: rgba(10, 10, 10, 0.85);
         }
 
         @media (max-width: 768px) {
