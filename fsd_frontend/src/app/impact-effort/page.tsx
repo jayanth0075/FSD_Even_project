@@ -6,7 +6,7 @@ export default function ImpactEffortPage() {
     <>
       <Navbar />
       <Sidebar />
-      <main style={{ marginLeft: '250px', padding: 'var(--space-2xl)' }}>
+      <main className="page-shell" style={{ marginLeft: '250px', padding: 'var(--space-2xl)' }}>
         <div className="container">
           <div style={{ marginBottom: 'var(--space-2xl)' }}>
             <h1>Impact vs Effort</h1>
