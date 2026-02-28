@@ -1,7 +1,6 @@
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { Navbar } from '../components/Navbar'
-import { useTheme } from '../context/ThemeContext'
 
 const TYPING_STRINGS = [
   'Track Coding Streaks',
@@ -12,10 +11,7 @@ const TYPING_STRINGS = [
 ]
 
 export default function LandingPage() {
-  const canvasRef = useRef<HTMLCanvasElement>(null)
-  const animFrameRef = useRef<number>(0)
   const navigate = useNavigate()
-  const { theme } = useTheme()
 
   // Typing effect state
   const [typedText, setTypedText] = useState('')
@@ -51,73 +47,6 @@ export default function LandingPage() {
     return () => clearTimeout(timeout)
   }, [charIndex, deleting, strIndex])
 
-  // Particle network canvas
-  useEffect(() => {
-    const canvas = canvasRef.current
-    if (!canvas) return
-    const ctx = canvas.getContext('2d')
-    if (!ctx) return
-
-    const resize = () => {
-      canvas.width = window.innerWidth
-      canvas.height = window.innerHeight
-    }
-    resize()
-    window.addEventListener('resize', resize)
-
-    interface Particle { x: number; y: number; vx: number; vy: number }
-    const particles: Particle[] = []
-    for (let i = 0; i < 70; i++) {
-      particles.push({
-        x: Math.random() * canvas.width,
-        y: Math.random() * canvas.height,
-        vx: (Math.random() - 0.5) * 0.4,
-        vy: (Math.random() - 0.5) * 0.4,
-      })
-    }
-
-    const draw = () => {
-      const isDark = theme === 'dark'
-      ctx.clearRect(0, 0, canvas.width, canvas.height)
-
-      const dotColor = isDark ? 'rgba(125,211,252,0.7)' : 'rgba(56,189,248,0.5)'
-      const lineBase = isDark ? 'rgba(14,165,233,' : 'rgba(56,189,248,'
-
-      particles.forEach((p) => {
-        p.x += p.vx; p.y += p.vy
-        if (p.x < 0 || p.x > canvas.width) p.vx *= -1
-        if (p.y < 0 || p.y > canvas.height) p.vy *= -1
-        ctx.fillStyle = dotColor
-        ctx.beginPath()
-        ctx.arc(p.x, p.y, 2.5, 0, Math.PI * 2)
-        ctx.fill()
-      })
-
-      for (let i = 0; i < particles.length; i++) {
-        for (let j = i + 1; j < particles.length; j++) {
-          const dx = particles[i].x - particles[j].x
-          const dy = particles[i].y - particles[j].y
-          const dist = Math.sqrt(dx * dx + dy * dy)
-          if (dist < 160) {
-            ctx.strokeStyle = lineBase + (0.18 * (1 - dist / 160)).toFixed(2) + ')'
-            ctx.lineWidth = 1
-            ctx.beginPath()
-            ctx.moveTo(particles[i].x, particles[i].y)
-            ctx.lineTo(particles[j].x, particles[j].y)
-            ctx.stroke()
-          }
-        }
-      }
-      animFrameRef.current = requestAnimationFrame(draw)
-    }
-
-    draw()
-    return () => {
-      cancelAnimationFrame(animFrameRef.current)
-      window.removeEventListener('resize', resize)
-    }
-  }, [theme])
-
   const socialLinks = [
     { icon: '💼', label: 'LinkedIn', href: '#' },
     { icon: '🐙', label: 'GitHub', href: '#' },
@@ -129,27 +58,13 @@ export default function LandingPage() {
   return (
     <>
       <Navbar />
-      <main style={{ position: 'relative', overflow: 'hidden', minHeight: '100vh', background: 'var(--bg-primary)' }}>
-        {/* Network canvas background */}
-        <canvas
-          ref={canvasRef}
-          style={{
-            position: 'fixed',
-            inset: 0,
-            width: '100%',
-            height: '100%',
-            zIndex: 0,
-            pointerEvents: 'none',
-          }}
-        />
+      <main className="page-shell" style={{ minHeight: '100vh', background: 'var(--bg-primary)' }}>
 
         {/* Hero Section */}
         <section style={{
           minHeight: 'calc(100vh - 70px)',
           display: 'flex',
           alignItems: 'center',
-          position: 'relative',
-          zIndex: 10,
           padding: 'var(--space-2xl)',
         }}>
           <div style={{
