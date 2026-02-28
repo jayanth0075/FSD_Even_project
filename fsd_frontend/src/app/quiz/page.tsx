@@ -9,7 +9,7 @@ export default function QuizPage() {
     <>
       <Navbar />
       <Sidebar />
-      <main style={{ marginLeft: '250px' }}>
+      <main className="page-shell" style={{ marginLeft: '250px' }}>
         <div className="container">
           <div style={{ marginBottom: 'var(--space-2xl)' }}>
             <h1>Quiz</h1>
