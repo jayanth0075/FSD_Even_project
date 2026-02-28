@@ -6,6 +6,15 @@ export interface User {
   avatar?: string
   bio?: string
   joinDate: string
+  links?: {
+    linkedIn?: string
+    github?: string
+    twitter?: string
+    website?: string
+    resume?: string
+    telegram?: string
+    leetCode?: string
+  }
 }
 
 export interface ActivityData {
