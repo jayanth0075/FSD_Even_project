@@ -10,7 +10,16 @@ const mockUser: User = {
   email: 'user@example.com',
   avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=devpulse',
   bio: 'Passionate developer & lifelong learner',
-  joinDate: '2024-01-15'
+  joinDate: '2024-01-15',
+  links: {
+    linkedIn: 'https://www.linkedin.com/in/devpulse',
+    github: 'https://github.com/devpulse',
+    twitter: 'https://x.com/devpulse',
+    website: 'https://devpulse.dev',
+    resume: 'https://devpulse.dev/resume.pdf',
+    telegram: 'https://t.me/devpulse',
+    leetCode: 'https://leetcode.com/devpulse/'
+  }
 }
 
 const mockStats: DashboardStats = {
