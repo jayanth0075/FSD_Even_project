@@ -1,10 +1,21 @@
 /* ===== PAGE CHROME ===== */
+.app-surface {
+  position: relative;
+  z-index: 1;
+  min-height: 100vh;
+}
+
 .page-shell {
   position: relative;
   min-height: calc(100vh - 70px);
   background: transparent;
   overflow: hidden;
   isolation: isolate;
+}
+
+.page-shell > * {
+  position: relative;
+  z-index: 1;
 }
 
 .page-shell::before {

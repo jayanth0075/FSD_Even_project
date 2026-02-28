@@ -3,6 +3,7 @@ import './App.css'
 import { AuthProvider } from './context/AuthContext'
 import { ThemeProvider } from './context/ThemeContext'
 import { ProtectedRoute } from './components/ProtectedRoute'
+import { FloatingBackground } from './components/FloatingBackground'
 
 // Pages
 import LandingPage from './app/page'
@@ -24,8 +25,10 @@ function App() {
   return (
     <Router>
       <ThemeProvider>
-        <AuthProvider>
-          <Routes>
+        <FloatingBackground />
+        <div className="app-surface">
+          <AuthProvider>
+            <Routes>
             <Route path="/" element={<LandingPage />} />
             <Route path="/signin" element={<SignInPage />} />
             <Route path="/signup" element={<SignUpPage />} />
@@ -117,8 +120,9 @@ function App() {
                 </ProtectedRoute>
               }
             />
-          </Routes>
-        </AuthProvider>
+            </Routes>
+          </AuthProvider>
+        </div>
       </ThemeProvider>
     </Router>
   )
